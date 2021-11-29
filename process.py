@@ -180,11 +180,11 @@ def read_mail_log_and_process(total_pics):
 			# find the date (month) of last sent mail
 			last_month = int (decrypted_mail_data[-10:-8])
 			# checking if the the mail has already been sent
-			# if month == last_month:
-			# 	print ("Mail already sent")
-			# else:
-			data_exists = True
-			process_mail_and_log(total_pics, date,f, data_exists)
+			if month == last_month:
+				print ("Mail already sent")
+			else:
+				data_exists = True
+				process_mail_and_log(total_pics, date,f, data_exists)
 		else:
 			data_exists = False
 			process_mail_and_log(total_pics, date,f, data_exists)

@@ -1,5 +1,6 @@
 # Fukuhaku Luxeye Library
 # 1. Installation
+![fukuhaku_concept](https://user-images.githubusercontent.com/60061358/143806781-1ea19974-9943-4e4a-81cc-8af355c6c88e.png)
 
 ### Create an environment for the project
 

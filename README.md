@@ -24,7 +24,7 @@ $ python process.py --input_dir data/test_data/DICM/ --output_dir data/test_resu
 # 3. Samples
 | Input             |  Output |
 :-------------------------:|:-------------------------:
-![](data/test_data/DICM/01.jpg)  |  ![](data/test_data/DICM/02.jpg)
-![](data/test_data/DICM/01.jpg)  |  ![](data/test_data/DICM/02.jpg)
-![](data/test_data/DICM/01.jpg)  |  ![](data/test_data/DICM/02.jpg)
+![](data/test_data_2/0288.bmp)  |  ![](data/test_result_2/0288.jpg)
+![](data/test_data_2/0293.bmp)  |  ![](data/test_result_2/0293.jpg)
+![](data/test_data_2/IMG_1416.jpg)  |  ![](data/test_result_2/IMG_1416.jpg)
 

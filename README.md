@@ -1,4 +1,5 @@
-# fukuhaku-luxeye
+# Fukuhaku Luxeye Library
+# 1. Installation
 
 ### Create an environment for the project
 
@@ -15,6 +16,14 @@ Install the packages with....
 
 $ pip install -r requirements.txt
 
-### command to run the program:
+# 2. Command to run the program
+### run the following command to process images in "input_dir":
 
 $ python process.py --input_dir data/test_data/DICM/ --output_dir data/test_result/
+
+# 3. Samples
+Input images
+
+
+Output images
+

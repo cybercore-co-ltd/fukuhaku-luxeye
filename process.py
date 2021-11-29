@@ -23,6 +23,7 @@ import sys
 from getmac import get_mac_address as get_mac
 import hashlib
 
+# Function to process the images
 def lowlight(image_path, output_dir):
 	os.environ['CUDA_VISIBLE_DEVICES']='0'
 	data_lowlight = Image.open(image_path)
@@ -47,6 +48,7 @@ def lowlight(image_path, output_dir):
 
 	torchvision.utils.save_image(enhanced_image, result_path)
 
+# Function to get the digest of encrypted file
 def get_digest(file_name):
 	md5_object = hashlib.md5()
 	block_size = 128 * md5_object.block_size
@@ -60,6 +62,7 @@ def get_digest(file_name):
 	md5_hash = md5_object.hexdigest()
 	return md5_hash
 
+# Function to check internet
 def check_internet():
 	url = "https://outlook.live.com/owa/"
 	timeout = 5
@@ -69,6 +72,7 @@ def check_internet():
 	except (requests.ConnectionError, requests.Timeout) as exception:
 		sys.exit("No internet connection")  
 
+# Fucntion to send mail
 def send_mail(total_number_of_pictures, mac):
     try:
         port = 465  # For SMTP_SSL
@@ -113,7 +117,9 @@ def send_mail(total_number_of_pictures, mac):
     except Exception as ex:
         print ("Error sending mail ",ex)
 
-
+# getting the MAC address of the used machine 
+# and call the send mail function and log the 
+# event and encrypt it.
 def process_mail_and_log(total_pics, date,f, data_exists):
 	# getting the MAC address of the current machine
 	mac = get_mac()
@@ -129,6 +135,7 @@ def process_mail_and_log(total_pics, date,f, data_exists):
 			encrypted_mail_data = str(current_encrypted_data)
 		log_file.write(encrypted_mail_data)
 
+# writing the encrypted data into log file and creatig digest
 def processed_picture_info_log(files_processed,total_pics,pic_exists):
 	current_encrypted_data = encrypt_data(files_processed,total_pics)
 	if pic_exists:
@@ -143,7 +150,7 @@ def processed_picture_info_log(files_processed,total_pics,pic_exists):
 	with open('digest.txt', "w") as d:
 		d.write(digest)
 	
-
+# Getting current date and time
 def get_current_time():
 	today = dt.datetime.now()
 	# year = today.year
@@ -153,6 +160,7 @@ def get_current_time():
 	time_now = today.strftime("%H:%M:%S")
 	return date,time_now,month,day
 
+# Encrypting the image processing data
 def encrypt_data(files_processed,total_files_processed):
 	date,time_now,_,_ = get_current_time()
 	log_data  = {'date' : date, 'time' : time_now, 'image_processed' : files_processed, 'total_image_processed': total_files_processed}
@@ -161,6 +169,7 @@ def encrypt_data(files_processed,total_files_processed):
 	current_encrypted_data = f.encrypt(log_data)
 	return current_encrypted_data
 
+# decrypting data from the encrypted data
 def recovering_data(encrypted_data,f):
 	encrypted_data_split = encrypted_data.split(',')
 	encrypted_data_last = encrypted_data_split[-1]
@@ -168,6 +177,8 @@ def recovering_data(encrypted_data,f):
 	decrypted_data = str(f.decrypt(encrypted_data_last))[2:-1]
 	return decrypted_data
 
+# Reading the mail log file and checking 
+# if the mail has been sent or not.
 def read_mail_log_and_process(total_pics):
 	date,_,month,day = get_current_time()
 	if day >= send_date:
@@ -213,7 +224,7 @@ if __name__ == '__main__':
 				files_processed = len(file_list)
 				output_dir = args.output_dir
 				for image in file_list:
-					# print(image)
+					print(image)
 					lowlight(image, output_dir)
 			
 				# checking if the file is empty

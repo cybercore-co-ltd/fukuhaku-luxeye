@@ -1,5 +1,13 @@
 # fukuhaku-luxeye
 
+### Create an environment for the project
+
+$ conda create --name cc-luxeye python=3.7.7
+
+### Activate the environment
+
+$ conda activate cc-luxeye
+
 ### Requirements for creating the necessary environment
 
 The necessary packages are listed in 'requirements.txt' file.

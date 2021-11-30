@@ -6,7 +6,6 @@ import argparse
 import time
 import model
 import numpy as np
-from torchvision import transforms
 from PIL import Image
 import glob
 import time
@@ -70,7 +69,7 @@ def check_internet():
 		request = requests.get(url, timeout=timeout)
 		print("Connected to the Internet")
 	except (requests.ConnectionError, requests.Timeout) as exception:
-		sys.exit("No internet connection")  
+		sys.exit("No internet connection :", exception)  
 
 # Fucntion to send mail
 def send_mail(total_number_of_pictures, mac):
@@ -206,24 +205,39 @@ if __name__ == '__main__':
 	parser.add_argument('--input_dir', required=True, help='path to input images')
 	parser.add_argument('--output_dir', required=True, help='path to input images')
 	args = parser.parse_args()
+
+	# Threshold for date
 	send_date = 16
+	
+	# Key to encrypt the text file
 	key = "j-wo0BP76EORpbkTYgG2kbJZBber1Vr2DUml0Zlyv_0=".encode()
 	f = Fernet(key)
+
+	# Function to check if the internet is connected
 	check_internet()
 
 # test_images
 	with torch.no_grad():
+		# Checking f the necessary log files are present
 		if (exists('picture_count_log.txt') and exists('mail_log.txt') and exists('digest.txt')):
+			# Comparing digest by MD5 algorithm to check if the file is tampered
 			digest = get_digest('picture_count_log.txt')
 			with open('digest.txt', 'r') as d:
 				digest_prev = d.read()
 			if digest != digest_prev:
 				sys.exit("Log file is tampered")
 			else:
-				file_list = glob.glob(os.path.join(args.input_dir, "*"))
+				# only image files with extension .jpg, .png and .bmp will be processed
+				file_list = glob.glob(os.path.join(args.input_dir, "*.jpg" or "*.png" or "*.bmp"))
 				files_processed = len(file_list)
+
+				# to check if the folder is empty
+				if files_processed == 0:
+					print ("There is no image in the folder.")
+
 				output_dir = args.output_dir
 				for image in file_list:
+    			# 	if image.endswith("*.txt"):
 					print(image)
 					lowlight(image, output_dir)
 			

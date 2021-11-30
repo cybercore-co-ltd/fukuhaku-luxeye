@@ -9,7 +9,6 @@ astunparse==1.6.3
 async-timeout==3.0.1
 attrs==21.2.0
 # Editable install with no version control (basicsr==1.3.4.2)
--e /home/dl-box/anaconda3/envs/cc-luxeye/lib/python3.7/site-packages
 billiard==3.6.3.0
 blinker==1.4
 brotlipy==0.7.0
@@ -22,7 +21,7 @@ chardet==3.0.4
 charset-normalizer==2.0.4
 clang==5.0
 click==8.0.1
-cryptography==3.1
+cryptography
 cycler==0.10.0
 Django==3.0.5
 django-cors-headers==3.10.0
@@ -36,7 +35,7 @@ filterpy==1.4.5
 fire==0.4.0
 flatbuffers==1.12
 future==0.18.2
-gast==0.2.2
+gast
 getmac==0.8.2
 gfpgan==0.2.1
 google-auth==1.35.0
@@ -49,9 +48,9 @@ imageio==2.9.0
 importlib-metadata==3.10.0
 jsonpatch==1.32
 jsonpointer==2.1
-Keras==2.2.0
-Keras-Applications==1.0.7
-Keras-Preprocessing==1.1.2
+Keras
+Keras-Applications
+Keras-Preprocessing
 kiwisolver==1.3.2
 kombu==4.6.8
 llvmlite==0.37.0
@@ -94,21 +93,21 @@ requests==2.26.0
 requests-oauthlib==1.3.0
 rsa==4.7.2
 scikit-image==0.18.3
-scipy==1.7.1
+scipy
 six==1.15.0
 sqlparse==0.3.1
 tb-nightly==2.7.0a20210911
-tensorboard==1.15.0
+tensorboard
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.0
-tensorflow==2.3.0
-tensorflow-estimator==1.15.1
-tensorflow-gpu==1.15.5
+tensorflow
+tensorflow-estimator
+tensorflow-gpu
 termcolor==1.1.0
 Theano==1.0.5
 tifffile==2021.8.30
 torch==1.7.0
-torchaudio==0.7.0a0+ac17b64
+torchaudio==0.7.0
 torchfile==0.1.0
 torchsummary==1.5.1
 torchvision==0.8.0
@@ -116,7 +115,6 @@ tornado==6.1
 tqdm==4.62.2
 typing-extensions==3.7.4.3
 urllib3==1.26.6
-uWSGI==2.0.18
 vine==1.3.0
 visdom==0.1.8.9
 websocket-client==1.2.1
